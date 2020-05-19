@@ -70,18 +70,18 @@ export class AppComponent {
   googleChartsLoaded: boolean = false;
 
   onReportComplete(): void {
-    // this.pivot.flexmonster.off("reportcomplete");
+    this.pivot.flexmonster.off("reportcomplete");
     this.pivotTableReportComplete = true;
     this.createGoogleChart();
   }
 
   createGoogleChart() {
     if (this.googleChartsLoaded) {
-/*       this.pivot.flexmonster.googlecharts.getData(
+      this.pivot.flexmonster.googlecharts.getData(
         { type: "pie" },
         data => this.drawChart(data),
         data => this.drawChart(data)
-      ); */
+      ); 
     }
   }
 
