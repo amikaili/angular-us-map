@@ -1,4 +1,21 @@
 
-<div style="max-width: 80%; text-align:center">
-  <app-us-map [ids]='selectedState' [enableTooltip]='false' [colors]="{fill:'#518a38', unfill: '#30973e21'}"></app-us-map>
-</div>
+<h1>Angular 7/Flexmonster</h1>
+
+
+<fm-pivot
+  [componentFolder]="'https://cdn.flexmonster.com/'"
+  [toolbar]="true"
+  [width]="800"
+  [height]="450"
+  [report]="pivotReport"
+  [customizeCell]="onCustomizeCell"
+  [licenseKey]="licenseKey"
+  (ready)="onPivotReady($event)"
+  (reportcomplete)="onReportComplete($event)"
+>
+</fm-pivot>
+
+
+<h2 style="padding-left:300px;">Googlechart Container</h2>
+<div style="height:400px;" id="googlechart-container-1"></div>
+
