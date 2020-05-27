@@ -8,18 +8,27 @@ import { FlexmonsterPivot } from "ng-flexmonster";
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
-  @ViewChild("pivot", {}) pivot: FlexmonsterPivot;
+  @ViewChild("pivot") pivot: FlexmonsterPivot;
   public pivotReport = {
     dataSource: {
-      filename: "https://cdn.flexmonster.com/data/data.csv"
+      "Type": "database",
+      "DatabaseType": "postgresql",
+      "ConnectionString": "Server=localhost;Port=5432;Uid=amikaili;Pwd=jazzmine;Database=amp_survey",
+    
+      "index": {
+            "Query": "SELECT email FROM sec_user;"
+      }
+        
+    
     },
-    slice: {
+
+   slice: {
       rows: [
         {
           uniqueName: "Destination",
           filter: {
             measure: {
-              uniqueName: "Price",
+              uniqueName: "Quantity",
               aggregation: "sum"
             },
             query: {
@@ -27,12 +36,22 @@ export class AppComponent {
             }
           }
         },
-        { uniqueName: "Color" },
+        { uniqueName: "Cases" },
         { uniqueName: "[Measures]" }
       ],
       columns: [{ uniqueName: "Category" }, { uniqueName: "Country" }],
-      measures: [{ uniqueName: "Price", aggregation: "sum" }]
+      measures: [{ uniqueName: "Quantity", aggregation: "sum" }]
+    },
+
+    "Port": "9500",
+    
+   "Security": {
+     "Authorization": {
+       "Enabled": false
+     }
     }
+
+
   };
 
   public licenseKey =
