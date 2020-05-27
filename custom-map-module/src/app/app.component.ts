@@ -19,7 +19,7 @@ export class AppComponent {
           uniqueName: "Destination",
           filter: {
             measure: {
-              uniqueName: "Price",
+              uniqueName: "Quantity",
               aggregation: "sum"
             },
             query: {
@@ -27,11 +27,11 @@ export class AppComponent {
             }
           }
         },
-        { uniqueName: "Color" },
+        { uniqueName: "Cases" },
         { uniqueName: "[Measures]" }
       ],
       columns: [{ uniqueName: "Category" }, { uniqueName: "Country" }],
-      measures: [{ uniqueName: "Price", aggregation: "sum" }]
+      measures: [{ uniqueName: "Quantity", aggregation: "sum" }]
     }
   };
 
