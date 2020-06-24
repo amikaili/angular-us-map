@@ -8,11 +8,34 @@ import { FlexmonsterPivot } from "ng-flexmonster";
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
-  @ViewChild("pivot", {}) pivot: FlexmonsterPivot;
+  @ViewChild("pivot") pivot: FlexmonsterPivot;
   public pivotReport = {
+
+
+
+    container: "pivotContainer",
+    
+
+    report: {
+
     dataSource: {
-      filename: "https://cdn.flexmonster.com/data/data.csv"
+      filename: "CTSAhubs.csv"
+    }
+
     },
+
+
+    slice: {
+      rows: [
+        { uniqueName: "Hub" }
+      ],
+
+      columns: [{ uniqueName: "Name" }, { uniqueName: "State" }]
+  
+
+    }
+
+    /*
     slice: {
       rows: [
         {
@@ -33,13 +56,17 @@ export class AppComponent {
       columns: [{ uniqueName: "Category" }, { uniqueName: "Country" }],
       measures: [{ uniqueName: "Quantity", aggregation: "sum" }]
     }
+    */
+
   };
 
+  /*
   public licenseKey =
     window.top !== window ||
     window.location.hostname.indexOf("codesandbox.io") >= 0
       ? "Z7AC-XII59E-6Q5C5S-0B3K68-07596N-384Y73-4Z5B2F-633J0J-403Y10-226G0J-0I48"
       : "Z787-XHJ68O-0S701F-6I6F5L-5T0G4H-1F4Q2F-6B4D6M-3E524L-2J112O-096X2G";
+  */
 
   ngOnInit() {
     google.charts.load("current", { packages: ["corechart"] });
@@ -70,7 +97,9 @@ export class AppComponent {
   googleChartsLoaded: boolean = false;
 
   onReportComplete(): void {
+
     this.pivot.flexmonster.off("reportcomplete");
+
     this.pivotTableReportComplete = true;
     this.createGoogleChart();
   }
